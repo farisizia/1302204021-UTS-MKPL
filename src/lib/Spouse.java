@@ -1,8 +1,7 @@
 package lib;
 
 public class spouse {
-    private String spouseName;
-    private String spouseNum;
+    private String spouseName, spouseNum;
 
     this.spouseNum = null;
     childIdNumbers = new LinkedList<String>();
