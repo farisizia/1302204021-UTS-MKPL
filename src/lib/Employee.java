@@ -34,7 +34,44 @@ public class Employee {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.idNumber = idNumber;
-		this.address = address;;
+		this.address = address;
+		private LocalDate Joined;
+			
+		}
+
+		public String EmployeeId() {
+			return employeeId;
+		}
+	
+		public String FirstName() {
+			return firstName;
+		}
+	
+		public String LastName() {
+			return lastName;
+		}
+	
+		public String Num() {
+			return idNumber;
+		}
+	
+		public String Address() {
+			return address;
+		}
+	
+		public LocalDate getDateJoined() {
+			return Joined;
+		}
+	
+		public boolean Foreigner() {
+			return isForeigner;
+		}
+	
+	
+		public Gender Gender() {
+			return gender;
+		}
+
 
 	}
 
@@ -46,7 +83,6 @@ public class Employee {
 		}else if (grade == 3) {
 			monthlySalary = 7000000;
 		}
-	}
 	}
 	
 	public void addChild(String childIdNumber) {
