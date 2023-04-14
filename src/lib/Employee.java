@@ -29,6 +29,7 @@ public class Employee {
 		this.monthJoined = monthJoined;
 		this.isForeigner = isForeigner;
 		
+		this.spouseIdNumber = null;
 		childIdNumbers = new LinkedList<String>();
 	}
 	
@@ -72,12 +73,11 @@ public class Employee {
 		
 		LocalDate date = LocalDate.now();
 		
-		if (date.getYear() == yearJoined) {
-			monthWorkingInYear = date.getMonthValue() - monthJoined;
-		}else {
-			monthWorkingInYear = 12;
-		}
-		
-		return TaxFunction.calculateTax(monthlySalary, otherMonthlyIncome, monthWorkingInYear, annualDeductible, spouseIdNumber.equals(""), childIdNumbers.size());
+		monthWorkingInYear = 12;
+
+		if (date.getYear() == yearJoined) monthWorkingInYear = date.getMonthValue() - monthJoined;
+
+		return TaxFunction.calculateTax(monthlySalary, otherMonthlyIncome, monthWorkingInYear, annualDeductible, spouseIdNumber != null, childIdNumbers.size());
+
 	}
 }
