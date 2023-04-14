@@ -18,18 +18,10 @@ public class Employee {
 	private String employeeId;
 	private String firstName;
 	private String lastName;
-	private String idNumber;
 	private String address;
 	
 	private Date dateJoined;
 	private boolean isForeigner;
-	
-	private int monthlySalary;
-	private int otherMonthlyIncome;
-	private int annualDeductible;
-	
-	private String spouseName;
-	private String spouseIdNumber;
 
 	private List<String> childIdNumbers;
 	private List<String> childNames;
@@ -45,7 +37,7 @@ public class Employee {
 		this.spouseIdNumber = null;
 		childIdNumbers = new LinkedList<String>();
 	}
-	
+
 	public void setMonthlySalary(int grade) {	
 		if (grade == 1) {
 			monthlySalary = 3000000;
@@ -84,9 +76,6 @@ public class Employee {
 		} else {
 			monthWorkingInYear = 12;		
 	}
-	return TaxFunction.calculateTax(monthlySalary, otherMonthlyIncome, monthWorkingInYear, annualDeductible,
-				spouseIdNumber == null || spouseIdNumber.equals(""), childIdNumbers.size());
-	
 
 	
 }
