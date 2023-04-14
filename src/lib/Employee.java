@@ -22,6 +22,8 @@ public class Employee {
 	
 	private Date dateJoined;
 	private boolean isForeigner;
+	
+
 
 	private List<String> childIdNumbers;
 	private List<String> childNames;
@@ -32,10 +34,45 @@ public class Employee {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.idNumber = idNumber;
-		this.address = address;;
-		
-		this.spouseIdNumber = null;
-		childIdNumbers = new LinkedList<String>();
+		this.address = address;
+		private LocalDate Joined;
+			
+		}
+
+		public String EmployeeId() {
+			return employeeId;
+		}
+	
+		public String FirstName() {
+			return firstName;
+		}
+	
+		public String LastName() {
+			return lastName;
+		}
+	
+		public String Num() {
+			return idNumber;
+		}
+	
+		public String Address() {
+			return address;
+		}
+	
+		public LocalDate getDateJoined() {
+			return Joined;
+		}
+	
+		public boolean Foreigner() {
+			return isForeigner;
+		}
+	
+	
+		public Gender Gender() {
+			return gender;
+		}
+
+
 	}
 
 	public void setMonthlySalary(int grade) {	
@@ -46,18 +83,6 @@ public class Employee {
 		}else if (grade == 3) {
 			monthlySalary = 7000000;
 		}
-	}
-	
-	public void setAnnualDeductible(int deductible) {	
-		this.annualDeductible = deductible;
-	}
-	
-	public void setAdditionalIncome(int income) {	
-		this.otherMonthlyIncome = income;
-	}
-	
-	public void setSpouse(String spouseIdNumber) {
-		this.spouseIdNumber = idNumber;
 	}
 	
 	public void addChild(String childIdNumber) {
@@ -76,6 +101,8 @@ public class Employee {
 		} else {
 			monthWorkingInYear = 12;		
 	}
+	
+	
 
 	
 }
