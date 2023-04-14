@@ -14,16 +14,9 @@ public class Employee {
 		}
 	
 	private Gender gender;
-	private String idNumber;
-	private String employeeId;
-	private String firstName;
-	private String lastName;
-	private String address;
-	
+	private String idNumber, employeeId,firstName, lastName, address;
 	private Date dateJoined;
 	private boolean isForeigner;
-	
-
 
 	private List<String> childIdNumbers;
 	private List<String> childNames;
