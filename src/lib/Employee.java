@@ -1,33 +1,46 @@
 package lib;
 
+import java.util.Date;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
+import java.time.ZoneId;
 
 public class Employee {
 
-
+		private enum Gender {
+			LAKI_LAKI,
+			PEREMPUAN
+		}
+	
+	private Gender gender;
 	private String idNumber;
+	private String employeeId;
+	private String firstName;
+	private String lastName;
+	private String idNumber;
+	private String address;
 	
-	private int yearJoined;
-	private int monthJoined;
-	private int monthWorkingInYear;
-	
+	private Date dateJoined;
 	private boolean isForeigner;
 	
 	private int monthlySalary;
 	private int otherMonthlyIncome;
 	private int annualDeductible;
 	
+	private String spouseName;
 	private String spouseIdNumber;
 
 	private List<String> childIdNumbers;
-	
-	public Employee(String idNumber, int yearJoined, int monthJoined, boolean isForeigner) {
+	private List<String> childNames;
+
+	public Employee(String employeeId, String firstName, String lastName, String idNumber, String address,
+	Date dateJoined, boolean isForeigner, Gender gender) {
+		this.employeeId = employeeId;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.idNumber = idNumber;
-		this.yearJoined = yearJoined;
-		this.monthJoined = monthJoined;
-		this.isForeigner = isForeigner;
+		this.address = address;;
 		
 		this.spouseIdNumber = null;
 		childIdNumbers = new LinkedList<String>();
@@ -40,7 +53,7 @@ public class Employee {
 			if (isForeigner) {
 				monthlySalary = (int) (3000000 * 1.5);
 			}
-		}else if (grade == 2) {
+		} else if (grade == 2) {
 			monthlySalary = 5000000;
 			if (isForeigner) {
 				monthlySalary = (int) (3000000 * 1.5);
@@ -67,17 +80,23 @@ public class Employee {
 	
 	public void addChild(String childIdNumber) {
 		childIdNumbers.add(childIdNumber);
+		childNames.add(childIdNumber);
 	}
 	
 	public int getAnnualIncomeTax() {
 		
-		LocalDate date = LocalDate.now();
-		
-		monthWorkingInYear = 12;
+		LocalDate currentDate = LocalDate.now();
+		LocalDate joinDate = dateJoined.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		int monthWorkingInYear;
 
-		if (date.getYear() == yearJoined) monthWorkingInYear = date.getMonthValue() - monthJoined;
-
-		return TaxFunction.calculateTax(monthlySalary, otherMonthlyIncome, monthWorkingInYear, annualDeductible, spouseIdNumber != null, childIdNumbers.size());
-
+		if (currentDate.getYear() == joinDate.getYear()) {
+			monthWorkingInYear = currentDate.getMonthValue() - joinDate.getMonthValue() + 1;
+		} else {
+			monthWorkingInYear = 12;		
 	}
+	return TaxFunction.calculateTax(monthlySalary, otherMonthlyIncome, monthWorkingInYear, annualDeductible,
+				spouseIdNumber == null || spouseIdNumber.equals(""), childIdNumbers.size());
+	
+
+	
 }
